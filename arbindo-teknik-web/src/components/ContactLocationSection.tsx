@@ -13,11 +13,11 @@ export default function ContactLocationSection() {
     process.env.NEXT_PUBLIC_WORKSHOP_ADDRESS ||
     'Landasan Ulin, Kota Banjarbaru, Kalimantan Selatan';
 
-  const googleMapsPlaceUrl =
-    'https://www.google.com/maps/place/Arbindo+Teknik/@-3.4369351,114.7459433,17z/data=!3m1!4b1!4m6!3m5!1s0x2de6834e91d4519f:0xb0f71e26c5212a90!8m2!3d-3.4369351!4d114.7459433!16s%2Fg%2F11k8hjgfdz';
+  const arbindoMapsLink =
+    'https://www.google.com/maps/place/Arbindo+Teknik/@-3.4369351,114.7459433,884m/data=!3m2!1e3!4b1!4m6!3m5!1s0x2de6834e91d4519f:0xb0f71e26c5212a90!8m2!3d-3.4369351!4d114.7459433!16s%2Fg%2F11k8hjgfdz?entry=ttu&g_ep=EgoyMDI2MTEyMy4wIKXMDSoASAFQAw%3D%3D';
 
-  const googleMapsEmbedUrl =
-    'https://maps.google.com/maps?q=-3.4369351,114.7459433+(Arbindo%20Teknik)&hl=id&z=17&output=embed';
+  const arbindoMapsEmbed =
+    'https://maps.google.com/maps?q=Arbindo+Teknik&ll=-3.4369351,114.7459433&z=17&output=embed';
 
   const handleSendWhatsApp = (e: React.FormEvent) => {
     e.preventDefault();
@@ -140,7 +140,7 @@ export default function ContactLocationSection() {
               <div className="w-full h-56 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800">
                 <iframe
                   title="Peta Lokasi Arbindo Teknik Banjarbaru"
-                  src={googleMapsEmbedUrl}
+                  src={arbindoMapsEmbed}
                   className="w-full h-full border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -148,7 +148,7 @@ export default function ContactLocationSection() {
               </div>
 
               <a
-                href={googleMapsPlaceUrl}
+                href={arbindoMapsLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline"
