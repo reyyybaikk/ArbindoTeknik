@@ -14,8 +14,10 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap'
 });
 
+const SITE_URL = 'https://arbindoteknik.my.id';
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://arbindo-teknik.vercel.app'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'Arbindo Teknik — Spesialis Servis Mesin Las Inverter & Power Electronics Banjarbaru',
     template: '%s | Arbindo Teknik'
@@ -30,13 +32,17 @@ export const metadata: Metadata = {
     'Bengkel Elektronika Daya Kalimantan Selatan',
     'Arbindo Teknik'
   ],
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png'
+  },
   alternates: {
-    canonical: 'https://arbindo-teknik.vercel.app'
+    canonical: SITE_URL
   },
   openGraph: {
     type: 'website',
     locale: 'id_ID',
-    url: 'https://arbindo-teknik.vercel.app',
+    url: SITE_URL,
     siteName: 'Arbindo Teknik',
     title: 'Arbindo Teknik — Spesialis Servis Mesin Las Inverter & Power Electronics',
     description:
@@ -51,7 +57,6 @@ export const metadata: Metadata = {
     }
   },
   verification: {
-    // Tempelkan kode verifikasi dari Google Search Console di sini (tanpa tag <meta>)
     google: '_ELZWpKPQ_C9sdPkoKT2MIIuNJkcxEAxKgAbS6J-wV0'
   }
 };
@@ -65,15 +70,18 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'Arbindo Teknik',
-    url: 'https://arbindo-teknik.vercel.app',
+    url: SITE_URL,
+    logo: `${SITE_URL}/logo.png`,
     description:
       'Spesialis servis mesin las inverter (MMA, TIG, MIG), modul inverter kulkas & mesin cuci, SMPS, dan power amplifier dengan garansi 14 hari.',
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Landasan Ulin, Banjarbaru',
+      streetAddress: 'Jl. Manggis No. 12, Landasan Ulin',
+      addressLocality: 'Banjarbaru',
       addressRegion: 'Kalimantan Selatan',
       addressCountry: 'ID'
     },
+    openingHours: 'Mo-Sa 09:00-18:00',
     areaServed: ['Banjarbaru', 'Landasan Ulin', 'Banjarmasin', 'Martapura', 'Kalimantan Selatan']
   };
 
