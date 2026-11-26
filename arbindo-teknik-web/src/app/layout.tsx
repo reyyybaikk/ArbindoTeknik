@@ -17,7 +17,11 @@ const jetbrainsMono = JetBrains_Mono({
 const SITE_URL = 'https://arbindoteknik.my.id';
 
 export const metadata: Metadata = {
+<<<<<<< HEAD
   metadataBase: new URL(SITE_URL),
+=======
+  metadataBase: new URL('https://arbindoteknik.my.id'),
+>>>>>>> 87c5ee9 (ahifa)
   title: {
     default: 'Arbindo Teknik — Spesialis Servis Mesin Las Inverter & Power Electronics Banjarbaru',
     template: '%s | Arbindo Teknik'
@@ -37,12 +41,20 @@ export const metadata: Metadata = {
     apple: '/logo.png'
   },
   alternates: {
+<<<<<<< HEAD
     canonical: SITE_URL
+=======
+    canonical: 'https://arbindoteknik.my.id'
+>>>>>>> 87c5ee9 (ahifa)
   },
   openGraph: {
     type: 'website',
     locale: 'id_ID',
+<<<<<<< HEAD
     url: SITE_URL,
+=======
+    url: 'https://arbindoteknik.my.id',
+>>>>>>> 87c5ee9 (ahifa)
     siteName: 'Arbindo Teknik',
     title: 'Arbindo Teknik — Spesialis Servis Mesin Las Inverter & Power Electronics',
     description:
@@ -70,8 +82,12 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'Arbindo Teknik',
+<<<<<<< HEAD
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
+=======
+    url: 'https://arbindoteknik.my.id',
+>>>>>>> 87c5ee9 (ahifa)
     description:
       'Spesialis servis mesin las inverter (MMA, TIG, MIG), modul inverter kulkas & mesin cuci, SMPS, dan power amplifier dengan garansi 14 hari.',
     address: {

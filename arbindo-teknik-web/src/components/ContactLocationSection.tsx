@@ -9,9 +9,10 @@ export default function ContactLocationSection() {
   const [device, setDevice] = useState('');
   const [issue, setIssue] = useState('');
 
-  const workshopAddress =
+  const workshopAddress = (
     process.env.NEXT_PUBLIC_WORKSHOP_ADDRESS ||
-    'Landasan Ulin, Kota Banjarbaru, Kalimantan Selatan';
+    'Landasan Ulin, Kota Banjarbaru, Kalimantan Selatan'
+  ).replace(/^["']|["']$/g, '');
 
   const arbindoMapsLink =
     'https://www.google.com/maps/place/Arbindo+Teknik/@-3.4369351,114.7459433,884m/data=!3m2!1e3!4b1!4m6!3m5!1s0x2de6834e91d4519f:0xb0f71e26c5212a90!8m2!3d-3.4369351!4d114.7459433!16s%2Fg%2F11k8hjgfdz?entry=ttu&g_ep=EgoyMDI2MTEyMy4wIKXMDSoASAFQAw%3D%3D';

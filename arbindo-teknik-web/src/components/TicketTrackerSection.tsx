@@ -74,6 +74,13 @@ export default function TicketTrackerSection() {
             </button>
           </form>
 
+          {/* Pesan Loading */}
+          {loading && (
+            <p className="mt-4 text-center text-xs text-slate-500 dark:text-slate-400">
+              Menghubungkan ke server workshop, mohon tunggu beberapa detik...
+            </p>
+          )}
+
           {/* Pesan Error */}
           {errorMsg && (
             <div className="mt-6 max-w-lg mx-auto p-4 rounded-xl bg-rose-50 dark:bg-rose-950/50 border border-rose-200 dark:border-rose-800/80 flex items-center gap-3 text-rose-700 dark:text-rose-300 text-sm">

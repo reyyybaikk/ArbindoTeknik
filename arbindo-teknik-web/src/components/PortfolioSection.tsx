@@ -27,18 +27,24 @@ function normalizeImageUrl(rawUrl?: string): string {
 
 export default function PortfolioSection() {
   const [cases, setCases] = useState<CaseStudy[]>(CASE_STUDIES_DATA);
+  const [isLoadingPortfolios, setIsLoadingPortfolios] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<PortfolioCategory>('Semua Kasus');
   const [activeCase, setActiveCase] = useState<CaseStudy | null>(null);
+  const [modalImageLoading, setModalImageLoading] = useState(false);
   const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     let mounted = true;
-    fetchPublicPortfolios().then((items) => {
-      if (mounted && items.length > 0) {
-        setCases(items);
-      }
-    });
+    fetchPublicPortfolios()
+      .then((items) => {
+        if (mounted && items.length > 0) {
+          setCases(items);
+        }
+      })
+      .finally(() => {
+        if (mounted) setIsLoadingPortfolios(false);
+      });
     return () => {
       mounted = false;
     };
@@ -113,7 +119,23 @@ export default function PortfolioSection() {
 
         {/* Grid Kartu Studi Kasus */}
         <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredCases.map((item) => {
+          {isLoadingPortfolios ? (
+            Array.from({ length: 3 }).map((_, idx) => (
+              <div
+                key={idx}
+                className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden animate-pulse"
+              >
+                <div className="aspect-video bg-slate-200 dark:bg-slate-800" />
+                <div className="p-5 space-y-3">
+                  <div className="h-3 w-24 bg-slate-200 dark:bg-slate-800 rounded" />
+                  <div className="h-5 w-3/4 bg-slate-200 dark:bg-slate-800 rounded" />
+                  <div className="h-3 w-full bg-slate-200 dark:bg-slate-800 rounded" />
+                  <div className="h-3 w-2/3 bg-slate-200 dark:bg-slate-800 rounded" />
+                </div>
+              </div>
+            ))
+          ) : (
+            filteredCases.map((item) => {
             const imgSrc = normalizeImageUrl(item.imageUrl);
             const showImage = Boolean(imgSrc) && !failedImages[item.id];
 
@@ -168,7 +190,10 @@ export default function PortfolioSection() {
 
                   <button
                     type="button"
-                    onClick={() => setActiveCase(item)}
+                    onClick={() => {
+                      setModalImageLoading(true);
+                      setActiveCase(item);
+                    }}
                     className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline shrink-0"
                   >
                     <span>Detail Teknis</span>
@@ -177,7 +202,8 @@ export default function PortfolioSection() {
                 </div>
               </article>
             );
-          })}
+          })
+          )}
         </div>
       </div>
 
@@ -217,13 +243,20 @@ export default function PortfolioSection() {
             {/* Foto Dokumentasi di Modal */}
             {normalizeImageUrl(activeCase.imageUrl) && !failedImages[activeCase.id] && (
               <div className="relative aspect-video rounded-xl overflow-hidden bg-slate-900 border border-slate-200 dark:border-slate-800">
+                {modalImageLoading && (
+                  <div className="absolute inset-0 bg-slate-200 dark:bg-slate-800 animate-pulse" />
+                )}
                 <Image
                   src={normalizeImageUrl(activeCase.imageUrl)}
                   alt={activeCase.title}
                   fill
                   sizes="(max-width: 640px) 100vw, 576px"
                   className="w-full h-full object-cover"
-                  onError={() => markImageFailed(activeCase.id)}
+                  onLoad={() => setModalImageLoading(false)}
+                  onError={() => {
+                    setModalImageLoading(false);
+                    markImageFailed(activeCase.id);
+                  }}
                 />
               </div>
             )}

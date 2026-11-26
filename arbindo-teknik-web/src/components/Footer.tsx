@@ -51,7 +51,7 @@ export default function Footer() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat WhatsApp Arbindo Teknik"
-        className="sm:hidden fixed bottom-5 right-5 z-40 w-14 h-14 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg flex items-center justify-center transition"
+        className="sm:hidden fixed bottom-4 right-4 z-40 w-12 h-12 rounded-full bg-emerald-600/95 hover:bg-emerald-700 text-white shadow-lg flex items-center justify-center transition"
       >
         <MessageCircle className="w-6 h-6" />
       </a>
