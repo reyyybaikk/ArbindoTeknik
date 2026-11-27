@@ -33,8 +33,8 @@ export const metadata: Metadata = {
     'Arbindo Teknik'
   ],
   icons: {
-    icon: '/logo.png',
-    apple: '/logo.png'
+    icon: '/icon.png',
+    apple: '/icon.png'
   },
   alternates: {
     canonical: SITE_URL
